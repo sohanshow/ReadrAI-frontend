@@ -1,8 +1,18 @@
 # ReadrAI - PDF to Audio Converter
 
-![Live Demo](https://readr-dsecdyb7ghgbbpbt.eastus2-01.azurewebsites.net)
+# 🎧 ReadrAI - PDF to Audio Converter
 
-![Video Demo](https://streamable.com/3yamep)
+[![Live Website](https://img.shields.io/badge/LIVE_WEBSITE-4484F1?style=for-the-badge&logo=windowsterminal&logoColor=white)](https://readr-dsecdyb7ghgbbpbt.eastus2-01.azurewebsites.net)
+[![Demo Video](https://img.shields.io/badge/DEMO_VIDEO-E34F26?style=for-the-badge&logo=youtube&logoColor=white)](https://streamable.com/3yamep)
+[![Vite](https://img.shields.io/badge/VITE-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/REACT-00D8FF?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![NestJS](https://img.shields.io/badge/NESTJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
+[![MongoDB](https://img.shields.io/badge/MONGODB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Azure](https://img.shields.io/badge/AZURE-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
+[![Tailwind](https://img.shields.io/badge/TAILWIND-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+
+Live Website: https://readr-dsecdyb7ghgbbpbt.eastus2-01.azurewebsites.net  
+Demo Video: https://streamable.com/3yamep
 
 ReadrAI is a sophisticated web application that transforms PDF documents into audio content, providing an accessible way to consume written content through audio. Built with Vite, React, and powered by PlayHT's AI voice generation technology.
 
