@@ -23,7 +23,6 @@ const UploadForm = ({ file, onClose, onSuccess }) => {
   const [currentAudioId, setCurrentAudioId] = useState(null);
   const audioRef = useRef(null);
   const [status, setStatus] = useState("idle");
-  const [uploadProgress, setUploadProgress] = useState(0);
   const [processingProgress, setProcessingProgress] = useState({
     phase: null,
     progress: 0,
@@ -55,13 +54,16 @@ const UploadForm = ({ file, onClose, onSuccess }) => {
       });
 
       socketRef.current.on(progressChannel, (progress) => {
-        // console.log("Progress update received:", progress);
         setProcessingProgress({
           phase: progress.phase,
-          progress: (progress.current / progress.total) * 100,
+          completedPages: progress.completedPages,
+          totalPages: progress.totalPages,
         });
 
-        if (progress.phase === "audio" && progress.current === progress.total) {
+        if (
+          progress.phase === "audio" &&
+          progress.completedPages === progress.totalPages
+        ) {
           setStatus("success");
           setTimeout(() => {
             onSuccess({ fileId });
@@ -117,7 +119,7 @@ const UploadForm = ({ file, onClose, onSuccess }) => {
     }
 
     setStatus("uploading");
-    setUploadProgress(0);
+
     setErrorMessage("");
 
     const formData = new FormData();
@@ -171,14 +173,15 @@ const UploadForm = ({ file, onClose, onSuccess }) => {
 
   const getProgress = () => {
     if (status === "uploading") {
-      return <ProgressBar phase="upload" progress={uploadProgress} />;
+      return <ProgressBar phase="upload" completedPages={1} totalPages={1} />;
     }
 
     if (status === "processing") {
       return (
         <ProgressBar
           phase={processingProgress.phase || "extraction"}
-          progress={processingProgress.progress}
+          completedPages={processingProgress.completedPages || 0}
+          totalPages={processingProgress.totalPages || 1}
         />
       );
     }

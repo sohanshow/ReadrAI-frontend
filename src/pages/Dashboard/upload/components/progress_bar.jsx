@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
-const ProgressBar = ({ phase, progress, showPercentage = true }) => {
+const ProgressBar = ({
+  phase,
+  completedPages,
+  totalPages,
+  showPercentage = true,
+}) => {
+  const progress = (completedPages / totalPages) * 100;
+
   const getPhaseText = () => {
     switch (phase) {
       case "upload":
@@ -9,7 +16,7 @@ const ProgressBar = ({ phase, progress, showPercentage = true }) => {
       case "extraction":
         return "Extracting text. Please wait...";
       case "audio":
-        return "Generating audio. Please wait...";
+        return `Generating audio: ${completedPages}/${totalPages} pages complete`;
       default:
         return "Processing. Please wait...";
     }
@@ -46,7 +53,8 @@ const ProgressBar = ({ phase, progress, showPercentage = true }) => {
 
 ProgressBar.propTypes = {
   phase: PropTypes.oneOf(["upload", "extraction", "audio"]).isRequired,
-  progress: PropTypes.number.isRequired,
+  completedPages: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
   showPercentage: PropTypes.bool,
 };
 

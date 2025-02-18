@@ -49,19 +49,18 @@ const Dashboard = () => {
           const progressChannel = `pdf-progress-${user.email}-${file._id}`;
 
           socketRef.current.on(progressChannel, (progress) => {
-            // console.log(`Progress update for file ${file._id}:`, progress);
             setProcessingFiles((prev) => ({
               ...prev,
               [file._id]: {
                 phase: progress.phase,
-                progress: (progress.current / progress.total) * 100,
+                completedPages: progress.completedPages,
+                totalPages: progress.totalPages,
               },
             }));
 
-            // Refresh file list when processing completes
             if (
               progress.phase === "audio" &&
-              progress.current === progress.total
+              progress.completedPages === progress.totalPages
             ) {
               fetchFiles();
             }
@@ -275,7 +274,8 @@ const Dashboard = () => {
                 <div className="mt-4">
                   <ProgressBar
                     phase={processingFiles[file._id].phase}
-                    progress={processingFiles[file._id].progress}
+                    completedPages={processingFiles[file._id].completedPages}
+                    totalPages={processingFiles[file._id].totalPages}
                   />
                 </div>
               )}
