@@ -59,6 +59,11 @@ cp .env.example .env
 npm run dev
 ```
 
+### Optimization 1 Pushed:
+
+- Added parallel processing of audio generation for pages
+- Cut down audio generation time for pdf files to more than 50%
+
 ## Architecture
 
 ### Frontend (Vite + React)
